@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoshanat Yerushalayim | Machon Chabad</title>
+    <meta name="description" content="Machon Shoshanat Yerushalayim" />
+    <meta name="keywords" content="Machon,Shoshanat,Yerushalayim,Jerusalem,Machon,Chabad,Education" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Heebo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #d81b60;
+            --primary-light: #f8bbd0;
+            --primary-dark: #ad1457;
+            --accent-gold: #e6ca65;
+            --bg-gradient: linear-gradient(135deg, #fff5f8 0%, #ffebee 50%, #fce4ec 100%);
+            --text-dark: #1a1a1a;
+            --text-muted: #555555;
+            --card-shadow: 0 15px 35px rgba(216, 27, 96, 0.12);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', 'Heebo', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            line-height: 1.6;
+            direction: ltr;
+            overflow-x: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header / Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            border-bottom: 2px solid rgba(216, 27, 96, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* Large Logo with Glow Effect */
+        .logo-container {
+            position: relative;
+            padding: 5px 20px;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.15);
+            transition: var(--transition);
+        }
+
+        .logo-container:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 30px rgba(216, 27, 96, 0.25);
+        }
+
+        .logo-img {
+            max-height: 135px;
+            width: auto;
+            display: block;
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero / Showcase Section */
+        .hero-section {
+            padding: 60px 20px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section-title h1 {
+            color: var(--primary);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(216, 27, 96, 0.1);
+            letter-spacing: -0.5px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* 4-Column Symmetrical Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .photo-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            aspect-ratio: 4/5;
+            position: relative;
+        }
+
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(216, 27, 96, 0.25);
+        }
+
+        .photo-card:hover::before {
+            opacity: 1;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* 4-Column Symmetrical Action Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(216, 27, 96, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(216, 27, 96, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
+            transition: var(--transition);
+        }
+
+        .info-card:hover .card-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .card-icon img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #ffffff !important;
+            padding: 12px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.35);
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(216, 27, 96, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: #ffffff;
+            color: var(--primary) !important;
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 5px 0;
+            font-size: 0.88rem;
+            transition: var(--transition);
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: #ffffff !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #121212;
+            color: #e0e0e0;
+            padding: 45px 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 80px;
+            border-top: 4px solid var(--primary);
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .photo-grid, .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid, .cards-container {
+                grid-template-columns: 1fr;
+            }
+            .section-title h1 {
+                font-size: 2.2rem;
+            }
+            .logo-img {
+                max-height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="Home.html">
+                    <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Machon Shoshanat Yerushalayim" class="logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Main Showcase -->
+    <section class="hero-section">
+        <div class="hero-container">
+            
+            <div class="section-title">
+                <h1>Machon Shoshanat Yerushalayim</h1>
+                <p>Applications & Admissions Information</p>
+            </div>
+
+            <!-- Symmetrical 4-Column Photo Grid -->
+            <div class="photo-grid">
+                <!-- 1. Rebbe -->
+                <div class="photo-card">
+                    <img src="https://www.msy.org.il/images/tg-min.jpg" alt="The Rebbe">
+                </div>
+                <!-- 2. Building -->
+                <div class="photo-card">
+                    <img src="https://www.msy.org.il/images/t.jpg" alt="Building">
+                </div>
+                <!-- 3. Brown Building -->
+                <div class="photo-card">
+                    <img src="https://www.msy.org.il/images/rtt.jpg" alt="Brown Building">
+                </div>
+                <!-- 4. Logo -->
+                <div class="photo-card">
+                    <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Logo Emblem">
+                </div>
+            </div>
+
+            <!-- Symmetrical 4-Column Information Cards -->
+            <div class="cards-container">
+                
+                <!-- 1. Application Card (Dynamic Dates) -->
+                <div class="info-card">
+                    <div style="width: 100%;">
+                        <div class="card-icon">
+                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Application Icon">
+                        </div>
+                        <h3>Application</h3>
+                        <p>
+                            Starts: <strong id="start-date">Loading...</strong><br>
+                            Ends: <strong id="end-date">Loading...</strong>
+                        </p>
+                    </div>
+                    <a href="https://form.fillout.com/t/n5YsMQKTRcus" target="_blank" class="btn-primary">
+                        Online Application
+                    </a>
+                </div>
+
+                <!-- 2. Forms & Uploads Card -->
+                <div class="info-card">
+                    <div style="width: 100%;">
+                        <div class="card-icon">
+                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Upload Icon">
+                        </div>
+                        <h3>Forms & Uploads</h3>
+                        <p>
+                            Transcripts, Report cards, Family form & Medical form.
+                        </p>
+                    </div>
+                    <a href="https://forms.gle/Tnx8JD1TZLbetFZr7" target="_blank" class="btn-secondary">
+                        Submit Documents
+                    </a>
+                </div>
+
+                <!-- 3. References Card -->
+                <div class="info-card">
+                    <div style="width: 100%;">
+                        <div class="card-icon">
+                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="References Icon">
+                        </div>
+                        <h3>References</h3>
+                        <p>Required reference forms for application completion.</p>
+                    </div>
+                    <div style="width: 100%;">
+                        <a href="https://forms.gle/MkcdQVweMCnjonx56" target="_blank" class="btn-secondary">
+                            Reference Form
+                        </a>
+                        <a href="https://form.fillout.com/t/mMYNvQbayuus" target="_blank" class="btn-secondary">
+                            מחנכת Form
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Checklist Card -->
+                <div class="info-card">
+                    <div style="width: 100%;">
+                        <div class="card-icon">
+                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Checklist Icon">
+                        </div>
+                        <h3>Check List</h3>
+                        <p>Check off each of the sections you submitted already.</p>
+                    </div>
+                    <a href="https://forms.gle/zro1kKRpoGBhL31Y8" target="_blank" class="btn-secondary">
+                        Check List Form
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>If you are having technical difficulties please email 
+            <a href="mailto:msyapply@gmail.com">msyapply@gmail.com</a>
+        </p>
+        <p>© Machon Shoshanat Yerushalayim | P.O.B. 5955, Jerusalem 91058 | +972 2.587.1711</p>
+    </footer>
+
+    <!-- Google Apps Script Fetching Script -->
+    <script>
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz6TZ6XsW_WRRv4T2XS40h8fkdMBbVdfmE3uQkAIk6aVgp7nIDe3hJjM6qZb2E9pzekSQ/exec';
+
+        async function fetchSheetDates() {
+            try {
+                const response = await fetch(WEB_APP_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const data = await response.json();
+                
+                if (data.startDate && document.getElementById('start-date')) {
+                    document.getElementById('start-date').innerText = data.startDate;
+                }
+                if (data.endDate && document.getElementById('end-date')) {
+                    document.getElementById('end-date').innerText = data.endDate;
+                }
+            } catch (error) {
+                console.error('Error fetching sheet data:', error);
+                // Fallback values if connection fails
+                if (document.getElementById('start-date')) document.getElementById('start-date').innerText = "Tuesday, ג' טבת, Dec 23, 2025";
+                if (document.getElementById('end-date')) document.getElementById('end-date').innerText = "Wednesday, ג' שבט, Jan 21, 2026";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchSheetDates);
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-214568087-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-214568087-1');
+    </script>
+</body>
+</html>

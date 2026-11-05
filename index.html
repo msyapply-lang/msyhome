@@ -39,6 +39,9 @@
             direction: ltr;
             overflow-x: hidden;
             animation: fadeIn 0.8s ease-out;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes fadeIn {
@@ -77,6 +80,7 @@
             background: #ffffff;
             box-shadow: 0 8px 25px rgba(216, 27, 96, 0.15);
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .logo-container:hover {
@@ -107,6 +111,7 @@
             transition: var(--transition);
             letter-spacing: 0.5px;
             position: relative;
+            cursor: pointer;
         }
 
         nav a::after {
@@ -120,12 +125,22 @@
             transition: var(--transition);
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--primary);
         }
 
-        nav a:hover::after {
+        nav a:hover::after, nav a.active::after {
             width: 100%;
+        }
+
+        /* Page View Switching */
+        .page-view {
+            display: none;
+            flex: 1;
+        }
+
+        .page-view.active {
+            display: block;
         }
 
         /* Hero / Showcase Section */
@@ -211,18 +226,20 @@
             transform: scale(1.08);
         }
 
-        /* 4-Column Symmetrical Action Cards */
+        /* 2-Column Symmetrical Action Cards */
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .info-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            padding: 35px 25px;
+            padding: 40px 30px;
             text-align: center;
             box-shadow: var(--card-shadow);
             border: 1px solid rgba(216, 27, 96, 0.15);
@@ -233,6 +250,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            min-height: 380px;
         }
 
         .info-card::after {
@@ -253,14 +271,14 @@
         }
 
         .card-icon {
-            width: 75px;
-            height: 75px;
+            width: 85px;
+            height: 85px;
             background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 22px auto;
             box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
             transition: var(--transition);
         }
@@ -270,21 +288,21 @@
         }
 
         .card-icon img {
-            width: 38px;
-            height: 38px;
+            width: 44px;
+            height: 44px;
             object-fit: contain;
         }
 
         .info-card h3 {
             color: var(--primary);
-            font-size: 1.35rem;
+            font-size: 1.55rem;
             font-weight: 700;
             margin-bottom: 15px;
         }
 
         .info-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             margin-bottom: 25px;
             line-height: 1.6;
         }
@@ -294,15 +312,17 @@
             display: inline-block;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: #ffffff !important;
-            padding: 12px 22px;
+            padding: 14px 25px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: var(--transition);
             box-shadow: 0 6px 20px rgba(216, 27, 96, 0.35);
             width: 100%;
             text-align: center;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -316,12 +336,12 @@
             background: #ffffff;
             color: var(--primary) !important;
             border: 2px solid var(--primary);
-            padding: 10px 20px;
+            padding: 12px 22px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
-            margin: 5px 0;
-            font-size: 0.88rem;
+            margin: 6px 0;
+            font-size: 0.95rem;
             transition: var(--transition);
             width: 100%;
             text-align: center;
@@ -335,6 +355,211 @@
             box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3);
         }
 
+        /* About Page Styles */
+        .about-section {
+            padding: 70px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(216, 27, 96, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .about-card h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-card h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .feature-item {
+            background: #fff5f8;
+            padding: 25px;
+            border-radius: 18px;
+            border-left: 4px solid var(--primary);
+            text-align: left;
+        }
+
+        .feature-item h4 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        /* Contact Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: #ffffff;
+            border-radius: 28px;
+            width: 90%;
+            max-width: 850px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: var(--transition);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 35px;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: #f0f0f0;
+            border: none;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+
+        .close-modal-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .contact-info-panel {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            padding: 35px 25px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info-panel h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info-panel p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .info-list-item {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-panel h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(216, 27, 96, 0.15);
+        }
+
+        .form-status {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+        }
+
         /* Footer */
         footer {
             background: #121212;
@@ -342,7 +567,7 @@
             padding: 45px 20px;
             text-align: center;
             font-size: 0.95rem;
-            margin-top: 80px;
+            margin-top: auto;
             border-top: 4px solid var(--primary);
         }
 
@@ -351,6 +576,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         footer a:hover {
@@ -364,13 +590,25 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .photo-grid, .cards-container {
+            .photo-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
+        @media (max-width: 768px) {
+            .cards-container, .features-grid, .modal-container {
+                grid-template-columns: 1fr;
+            }
+            .cards-container {
+                max-width: 450px;
+            }
+            .modal-container {
+                padding: 30px 20px;
+            }
+        }
+
         @media (max-width: 600px) {
-            .photo-grid, .cards-container {
+            .photo-grid {
                 grid-template-columns: 1fr;
             }
             .section-title h1 {
@@ -387,136 +625,232 @@
     <!-- Header / Navbar -->
     <header>
         <div class="header-container">
-            <div class="logo-container">
-                <a href="Home.html">
-                    <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Machon Shoshanat Yerushalayim" class="logo-img">
-                </a>
+            <div class="logo-container" onclick="showPage('home')">
+                <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Machon Shoshanat Yerushalayim" class="logo-img">
             </div>
             <nav>
                 <ul>
-                    <li><a href="Home.html">Home</a></li>
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
+                    <li><a id="nav-about" onclick="showPage('about')">About</a></li>
+                    <li><a id="nav-contact" onclick="openContactModal()">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero / Main Showcase -->
-    <section class="hero-section">
-        <div class="hero-container">
-            
-            <div class="section-title">
-                <h1>Machon Shoshanat Yerushalayim</h1>
-                <p>Applications & Admissions Information</p>
-            </div>
-
-            <!-- Symmetrical 4-Column Photo Grid -->
-            <div class="photo-grid">
-                <!-- 1. Rebbe -->
-                <div class="photo-card">
-                    <img src="https://www.msy.org.il/images/tg-min.jpg" alt="The Rebbe">
-                </div>
-                <!-- 2. Building -->
-                <div class="photo-card">
-                    <img src="https://www.msy.org.il/images/t.jpg" alt="Building">
-                </div>
-                <!-- 3. Brown Building -->
-                <div class="photo-card">
-                    <img src="https://www.msy.org.il/images/rtt.jpg" alt="Brown Building">
-                </div>
-                <!-- 4. Logo -->
-                <div class="photo-card">
-                    <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Logo Emblem">
-                </div>
-            </div>
-
-            <!-- Symmetrical 4-Column Information Cards -->
-            <div class="cards-container">
+    <!-- 1. HOME PAGE VIEW -->
+    <main id="home-page" class="page-view active">
+        <section class="hero-section">
+            <div class="hero-container">
                 
-                <!-- 1. Application Card (Dynamic Dates) -->
-                <div class="info-card">
-                    <div style="width: 100%;">
-                        <div class="card-icon">
-                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Application Icon">
-                        </div>
-                        <h3>Application</h3>
-                        <p>
-                            Starts: <strong id="start-date">Loading...</strong><br>
-                            Ends: <strong id="end-date">Loading...</strong>
-                        </p>
-                    </div>
-                    <a href="https://form.fillout.com/t/n5YsMQKTRcus" target="_blank" class="btn-primary">
-                        Online Application
-                    </a>
+                <div class="section-title">
+                    <h1>Machon Shoshanat Yerushalayim</h1>
+                    <p>Applications & Admissions Information</p>
                 </div>
 
-                <!-- 2. Forms & Uploads Card -->
-                <div class="info-card">
-                    <div style="width: 100%;">
-                        <div class="card-icon">
-                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Upload Icon">
-                        </div>
-                        <h3>Forms & Uploads</h3>
-                        <p>
-                            Transcripts, Report cards, Family form & Medical form.
-                        </p>
+                <!-- Symmetrical 4-Column Photo Grid -->
+                <div class="photo-grid">
+                    <!-- 1. Rebbe -->
+                    <div class="photo-card">
+                        <img src="https://www.msy.org.il/images/tg-min.jpg" alt="The Rebbe">
                     </div>
-                    <a href="https://forms.gle/Tnx8JD1TZLbetFZr7" target="_blank" class="btn-secondary">
-                        Submit Documents
-                    </a>
+                    <!-- 2. Building -->
+                    <div class="photo-card">
+                        <img src="https://www.msy.org.il/images/t.jpg" alt="Building">
+                    </div>
+                    <!-- 3. Brown Building -->
+                    <div class="photo-card">
+                        <img src="https://www.msy.org.il/images/rtt.jpg" alt="Brown Building">
+                    </div>
+                    <!-- 4. Logo -->
+                    <div class="photo-card">
+                        <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Logo Emblem">
+                    </div>
                 </div>
 
-                <!-- 3. References Card -->
-                <div class="info-card">
-                    <div style="width: 100%;">
-                        <div class="card-icon">
-                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="References Icon">
+                <!-- Symmetrical 2-Column Information Cards (Centered) -->
+                <div class="cards-container">
+                    
+                    <!-- 1. Application Card (Dynamic Dates) -->
+                    <div class="info-card">
+                        <div style="width: 100%;">
+                            <div class="card-icon">
+                                <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Application Icon">
+                            </div>
+                            <h3>Application</h3>
+                            <p>
+                                Starts: <strong id="start-date">Loading...</strong><br>
+                                Ends: <strong id="end-date">Loading...</strong>
+                            </p>
                         </div>
-                        <h3>References</h3>
-                        <p>Required reference forms for application completion.</p>
-                    </div>
-                    <div style="width: 100%;">
-                        <a href="https://forms.gle/MkcdQVweMCnjonx56" target="_blank" class="btn-secondary">
-                            Reference Form
-                        </a>
-                        <a href="https://form.fillout.com/t/mMYNvQbayuus" target="_blank" class="btn-secondary">
-                            מחנכת Form
+                        <a href="https://form.fillout.com/t/n5YsMQKTRcus" target="_blank" class="btn-primary">
+                            Online Application
                         </a>
                     </div>
-                </div>
 
-                <!-- 4. Checklist Card -->
-                <div class="info-card">
-                    <div style="width: 100%;">
-                        <div class="card-icon">
-                            <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="Checklist Icon">
+                    <!-- 2. References Card -->
+                    <div class="info-card">
+                        <div style="width: 100%;">
+                            <div class="card-icon">
+                                <img src="https://www.msy.org.il/images/dddhre-min.jpg" alt="References Icon">
+                            </div>
+                            <h3>References</h3>
+                            <p>Required reference forms for application completion.</p>
                         </div>
-                        <h3>Check List</h3>
-                        <p>Check off each of the sections you submitted already.</p>
+                        <div style="width: 100%;">
+                            <a href="https://forms.gle/MkcdQVweMCnjonx56" target="_blank" class="btn-secondary">
+                                Reference Form
+                            </a>
+                            <a href="https://form.fillout.com/t/mMYNvQbayuus" target="_blank" class="btn-secondary">
+                                מחנכת Form
+                            </a>
+                        </div>
                     </div>
-                    <a href="https://forms.gle/zro1kKRpoGBhL31Y8" target="_blank" class="btn-secondary">
-                        Check List Form
-                    </a>
+
                 </div>
 
             </div>
+        </section>
+    </main>
 
+    <!-- 2. ABOUT PAGE VIEW -->
+    <main id="about-page" class="page-view">
+        <section class="about-section">
+            <div class="about-card">
+                <h2>About Machon Shoshanat Yerushalayim</h2>
+                <p>Machon Shoshanat Yerushalayim is a premier Chabad educational institution dedicated to empowering young women through comprehensive Torah study, personal growth, and Hasidic values in the heart of Jerusalem.</p>
+                <p>Our program combines rigorous academic standards with a warm, supportive community environment that fosters lifelong friendships and spiritual development.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>In-Depth Study</h4>
+                        <p>Comprehensive Chasidus and Halacha curriculum taught by experienced educators.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Jerusalem Experience</h4>
+                        <p>Immersive Jewish living and inspirational atmosphere in the holy city of Jerusalem.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Personal Growth</h4>
+                        <p>Individualized guidance and mentorship tailored to every student's personal journey.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. CONTACT MODAL WINDOW -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="close-modal-btn" onclick="closeContactModal()">&times;</button>
+            
+            <div class="contact-info-panel">
+                <div>
+                    <h3>Get in Touch</h3>
+                    <p>We are here to answer all your questions regarding admissions, applications, and campus life.</p>
+                    
+                    <div class="info-list-item">
+                        <span>📍</span>
+                        <span>P.O.B. 5955, Jerusalem 91058, Israel</span>
+                    </div>
+                    <div class="info-list-item">
+                        <span>📞</span>
+                        <span>+972 2.587.1711</span>
+                    </div>
+                    <div class="info-list-item">
+                        <span>✉️</span>
+                        <span>msyapply@gmail.com</span>
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.85rem; opacity: 0.8;">© Machon Shoshanat Yerushalayim</p>
+            </div>
+
+            <div class="contact-form-panel">
+                <h3>Send Us a Message</h3>
+                <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="firstName" required placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="lastName" required placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="phone" required placeholder="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" required placeholder="Email address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Contact Method</label>
+                        <select id="preferredContact">
+                            <option value="Email">Email</option>
+                            <option value="Phone">Phone</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message / Notes</label>
+                        <textarea id="message" rows="3" placeholder="How can we help you?"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="btn-primary">Send Message</button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
         <p>If you are having technical difficulties please email 
-            <a href="mailto:msyapply@gmail.com">msyapply@gmail.com</a>
+            <a onclick="openContactModal()">msyapply@gmail.com</a>
         </p>
         <p>© Machon Shoshanat Yerushalayim | P.O.B. 5955, Jerusalem 91058 | +972 2.587.1711</p>
     </footer>
 
-    <!-- Google Apps Script Fetching Script -->
+    <!-- Google Apps Script & Logic Integration -->
     <script>
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz6TZ6XsW_WRRv4T2XS40h8fkdMBbVdfmE3uQkAIk6aVgp7nIDe3hJjM6qZb2E9pzekSQ/exec';
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwVh9WiKiKIZjvTRvByQq7KI4Ymaro5ZPnPAbxICzZJWAxxgr-6kuvC-xtpO4cTqtwO/exec';
 
+        // Navigation tab handler
+        function showPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+            
+            if (pageId === 'home') {
+                document.getElementById('home-page').classList.add('active');
+                document.getElementById('nav-home').classList.add('active');
+            } else if (pageId === 'about') {
+                document.getElementById('about-page').classList.add('active');
+                document.getElementById('nav-about').classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Modal Contact Window Handler
+        function openContactModal() {
+            document.getElementById('contact-modal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contact-modal').classList.remove('active');
+        }
+
+        // Close modal on outer click
+        document.getElementById('contact-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeContactModal();
+        });
+
+        // Fetch Dates from Google Sheet
         async function fetchSheetDates() {
             try {
                 const response = await fetch(WEB_APP_URL);
@@ -532,9 +866,54 @@
                 }
             } catch (error) {
                 console.error('Error fetching sheet data:', error);
-                // Fallback values if connection fails
                 if (document.getElementById('start-date')) document.getElementById('start-date').innerText = "Tuesday, ג' טבת, Dec 23, 2025";
                 if (document.getElementById('end-date')) document.getElementById('end-date').innerText = "Wednesday, ג' שבט, Jan 21, 2026";
+            }
+        }
+
+        // Form Submit Handler to Google Sheets
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = '#555';
+            statusDiv.innerText = 'Submitting your request...';
+
+            const payload = {
+                action: 'addContact',
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                preferredContact: document.getElementById('preferredContact').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                // Using no-mode or POST payload for Apps Script
+                await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                statusDiv.style.color = '#2e7d32';
+                statusDiv.innerText = 'Thank you! Your message has been submitted successfully.';
+                document.getElementById('contact-form').reset();
+                setTimeout(() => { closeContactModal(); statusDiv.style.display = 'none'; }, 2500);
+
+            } catch (err) {
+                console.error('Form submission error:', err);
+                statusDiv.style.color = '#c62828';
+                statusDiv.innerText = 'Error submitting form. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Send Message';
             }
         }
 
